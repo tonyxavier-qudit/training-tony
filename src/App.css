@@ -1,41 +1,295 @@
-.App {
-  text-align: center;
+.place-holder {
+  padding-left: 5px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* .group {
+position:relative;
+} */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.input-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.header-input:focus::placeholder {
+  opacity: 0;
+}
+
+.header-input {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #dadce0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header-input {
+  border: 0.5px solid #dadce0;
+  border-radius: 4px;
+  outline-color: #1a73e8;
+}
+
+.placeholder-text {
+  display: none;
+  font-size: 11px;
+  color: dodgerblue;
+  font-family: sans-serif;
+  background-color: #fff;
+  padding: 0 3px;
+}
+
+
+/*style of label when input is focused*/
+
+.header-input:focus+.placeholder-text {
+  display: inline;
+  position: absolute;
+  left: 12px;
+  top: -5px;
+}
+
+.input-container {
+  position: relative;
+  padding-right: 10px;
+  font-size: small;
+  padding-bottom: 10px;
+}
+
+.size {
+  max-width: 373px;
+  margin: auto;
+  position: relative;
+  display: inline-block;
+}
+
+.number {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  padding-top: 7px;
+}
+
+#user_name {
+  padding-right: 203px;
+  /* padding-bottom: 5px;
+  padding-top: 3px; */
+  /* padding-left: 0px; */
+}
+
+
+/* 
+.user_name {
+  padding-right: 0px; */
+
+
+
+.para1 {
+  padding-right: 25px;
+  color: #887971;
+  width: 90%;
+  FONT-SIZE: small;
+}
+.para {
+  margin-top: 2px;
+  /* padding-left: 10px; */
+  
+  color: #828282;
+  font-size: small;
+}
+h4 {
+  color: #3181ea;
+}
+h2 {
+  padding-bottom: 10px;
+  font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3333;
+  word-break: break-word;
+}
+.outer-input {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 17px
+}
+
+.para2 {
+  margin-top: 2px;
+  font-size: 14px;
+  color: #52a9f6;
+}
+img {
+  margin-bottom: -21px;
+}
+.img2 {
+  padding-top: 64px;
+  padding-left: 53px;
+}
+
+.main-div {
+  padding-top: 150px;
+}
+.topend {
+  display: flex;
+  border: 1px solid rgb(218 220 224);
+  padding-left: 47px;
+  padding-top: 39px;
+}
+.container {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.checkbox-div {
+  display: flex;
+  font-weight: 500;
+  font-size: 14px;
+}
+.sign {
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  letter-spacing: .0107142857em;
+  font-weight: 500;
+  text-transform: none;
+  line-height: inherit;
+  /* -webkit-user-select: none; */
+  display: flex;
+  padding-top: 70px;
+  padding-bottom: 92px;
+}
+h3 {
+  width: 78%;
+  text-align: center;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.4286;
+  color: #202124;
+  font-family: system-ui;
+}
+.checkbox1 {
+  width: 19px;
+  height: 18px;
+  position: relative;
+  top: 12px;
+}
+.button {
+  margin-left: 194px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 6px;
+  background-color: #1a73e8;
+  border: 0px;
+  cursor: pointer;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.href {
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: .875rem;
+  letter-spacing: .0107142857em;
+  font-weight: 500;
+  text-transform: none;
+  color: #1c51a8;
+  font-weight: bolder;
 }
-.h2-pp{
-  color: red;
+.signin-link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #1a73e8;
 }
+.signin-link:hover {
+  background-color: #edf0f67d;
+}
+.user-input {
+  padding-right: 195px;
+}
+select {
+  border: none;
+  background: none;
+}
+.select1 {
+  display: flex;
+  justify-content: space-between;
+}
+ul {
+  display: flex;
+  list-style-type: none;
+}
+li {
+  font-size: 12px;
+  font-family: roboto, "Noto Sans Myanmar UI", arial, sans-serif;
+  color: #676b76;
+  font-weight: bold;
+  cursor: pointer;
+}
+h4 {
+  font-size: small;
+  cursor: pointer;
+  padding-bottom: 10px;
+  display: inline-block;
+  padding: 10PX 8PX;
+  margin-top: 0px;
+  padding-left: 0px;
+  font: -webkit-control;
+  font-weight: 600;
+}
+#name-para {
+  font-size: small;
+  margin-top: 2px;
+}
+#password-para {
+  font-size: small;
+}
+.privacy {
+  padding-right: 35px;
+  padding-left: 35px;
+}
+select {
+  outline: none;
+}
+h4:hover {
+  background-color: #edf0f67d;
+}
+.checkbox2 {
+  padding-top: 2px;
+  padding-right: 269px;
+}
+.checkbox-div1:hover {
+  color: #1c51a8;
+}
+.checkbox-div1 {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+}
+.checkbox-div1:hover {
+  background-color: #edf0f67d;
+}
+i {
+  padding-right: 7px;
+  margin-right: 5px;
+}
+.App {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+   
+}
+.main1 {
+  border: 1px solid black;
+  width: 50%;
+  display: flex;
+  padding-left: 51px;
+  margin-left: 377px;
+    margin-top: 95px;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.main2 {
+  width: 27%;
+  margin-top: 60px;
+}
+.new {
+  padding-right: 109px;
 }

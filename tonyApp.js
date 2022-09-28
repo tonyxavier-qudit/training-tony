@@ -1,24 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import Location from './account.svg'
-import Locations from './new.jpg'
 
 function App()  {
 
   function handleChange(elem, id) {
     console.log('elem');
-
-}
-const formData = {
-    f_name: "",
-    l_name: "",
-    user_name: "",
-    password: "",
-    confirm_password: "",
 }
   return (
-      <div className="main1">
-<div className="App">
+    <div className="App">
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -34,21 +23,13 @@ const formData = {
         </a>
         <div>testing</div>
       </header> */}
-      {/* <div className="srcimg">
-      <img src={Locations} alt="ModelVector" />
-      </div>
-       */}
-      <div className="new">
-      <h2>Creat Your Google Account</h2>
-      </div>
-     
+       <h2 className="my">Creat Your Google Account</h2>
       <div className="main">
           <div className="input-row">
               <div className="input-container">
                   <input className="header-input" type="text" name="fname" placeholder="First Name" id="f_name" onKeyUp={handleChange(this, 'f_name') }/>
                   <label className="placeholder-text">First Name</label>
                   <p id="name-para"></p>
-                
               </div>
 
               <div className="input-container">
@@ -57,7 +38,7 @@ const formData = {
 
               </div>
           </div>
-          {/* <input className="header-input" type="text" name="fname" placeholder="last name" /> */}
+          <input className="header-input" type="text" name="fname" placeholder="last name" />
           <p></p>
           <div className="size input-container">
               <input className="header-input user-input" id="user_name" placeholder="Username" onKeyUp={handleChange(this, 'user_name')} />
@@ -90,7 +71,7 @@ const formData = {
                   <span className="placeholder-text">Confirm</span>
               </div>
           </div>
-          {/* <input className="outer-input" type="text" name="fname" placeholder="Confirm" /> */}
+          <input className="outer-input" type="text" name="fname" placeholder="Confirm" />
       </div>
       <p className="para1">Use 8 or more characters with a mix of letters, numbers & symbols</p>
       <div className="checkbox-div">
@@ -113,21 +94,9 @@ const formData = {
               <button className="button" onclick="getTitle()"> Next</button>
           </div>
       </div>
-      
-     
-     
-     
   </div>
-  <div className="main2">
-  <img src={Location} alt="ModelVector" />
-  </div>
- 
-      </div>
-    
-  
   );
 }
-
 
     
 
