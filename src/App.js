@@ -9,13 +9,14 @@ function App()  {
     console.log('elem');
 
 }
-const formData = {
+const [data, setData] = useState({
     f_name: "",
     l_name: "",
     user_name: "",
     password: "",
     confirm_password: "",
-}
+  });
+
   return (
       <div className="main1">
 <div className="App">
