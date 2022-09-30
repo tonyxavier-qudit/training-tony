@@ -88,6 +88,7 @@ position:relative;
   color: #887971;
   width: 90%;
   FONT-SIZE: small;
+  padding-left: 434px;
 }
 .para {
   margin-top: 2px;
@@ -292,4 +293,7 @@ i {
 }
 .new {
   padding-right: 109px;
+}
+.maindiv {
+  border: 1px solid;
 }
