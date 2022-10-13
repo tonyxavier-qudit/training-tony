@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import locations from'./account.svg'
 
 function Home() {
+  const [firstName, setFirstName] = useState('');
+  const [secondName, setSecondName] = useState('');
+  const [firstNameError, setFirstNameError] = useState('');
+  const [secondNameError, setSecondNameError] = useState('');
+
+
     const [data, setData] = useState({
         f_name: "",
         l_name: "",
@@ -32,61 +38,68 @@ function Home() {
       }
     
       function handleNext() {
-    
-        if (!data.user_name) {
-            document.getElementById("user-para").innerHTML = "Choose a Gmail address";
-            document.getElementById("user-para").style.color = "red";
-            // document.getElementById("validationIcon").style.display = "inline";;loiuytrdsa
-    
+
+        if(!firstName) {
+          setFirstNameError('Enter first name');
         } else {
-            document.getElementById("user-para").innerHTML = "you can use letters,numbers & periods";
-            document.getElementById("user-para").style.color = "#828282";
+          setFirstNameError('');
         }
+
     
-        if (!data.f_name && !data.l_name) {
-            document.getElementById("name-para").innerHTML = "Enter first and last name";
-            document.getElementById("name-para").style.color = "red";
+        // if (!data.user_name) {
+        //     document.getElementById("user-para").innerHTML = "Choose a Gmail address";
+        //     document.getElementById("user-para").style.color = "red";
+        //     // document.getElementById("validationIcon").style.display = "inline";;loiuytrdsa
     
-        } else if (!data.f_name && data.l_name) {
-            document.getElementById("name-para").innerHTML = "Enter first name";
-            document.getElementById("name-para").style.color = "red";
+        // } else {
+        //     document.getElementById("user-para").innerHTML = "you can use letters,numbers & periods";
+        //     document.getElementById("user-para").style.color = "#828282";
+        // }
     
-        } else if (data.f_name && !data.l_name) {
-            document.getElementById("name-para").innerHTML = "Enter last name";
+        // if (!data.f_name && !data.l_name) {
+        //     document.getElementById("name-para").innerHTML = "Enter first and last name";
+        //     document.getElementById("name-para").style.color = "red";
     
-            document.getElementById("name-para").style.color = "red";
+        // } else if (!data.f_name && data.l_name) {
+        //     document.getElementById("name-para").innerHTML = "Enter first name";
+        //     document.getElementById("name-para").style.color = "red";
     
-        } else {
-            document.getElementById("name-para").innerHTML = "";
-            // document.getElementById("name-para").style.color = "#828282";
-        }
+        // } else if (data.f_name && !data.l_name) {
+        //     document.getElementById("name-para").innerHTML = "Enter last name";
     
-        // password & confirm_password
+        //     document.getElementById("name-para").style.color = "red";
     
-        if (!data.password) {
-            document.getElementById("password-para").innerHTML = "Enter password";
-            document.getElementById("password-para").style.color = "red";
-            // document.getElementById("validationIcon").style.display = "inline";
+        // } else {
+        //     document.getElementById("name-para").innerHTML = "";
+        //     // document.getElementById("name-para").style.color = "#828282";
+        // }
     
-        } else if (data.password && !data.confirm_password) {
-            document.getElementById("password-para").innerHTML = "Enter confirm password";
-            // document.getElementById("confirm-para").style.color = "red";
-            // document.getElementById("validationIcon").style.display = "inline";
+        // // password & confirm_password
     
-        } else {
-            document.getElementById("user-para").innerHTML = "";
-            // document.getElementById("user-para").style.color = "#828282";
-        }
+        // if (!data.password) {
+        //     document.getElementById("password-para").innerHTML = "Enter password";
+        //     document.getElementById("password-para").style.color = "red";
+        //     // document.getElementById("validationIcon").style.display = "inline";
     
-        // passwords equal
+        // } else if (data.password && !data.confirm_password) {
+        //     document.getElementById("password-para").innerHTML = "Enter confirm password";
+        //     // document.getElementById("confirm-para").style.color = "red";
+        //     // document.getElementById("validationIcon").style.display = "inline";
     
-        if (data.password && data.confirm_password) {
-            if (data.password !== data.confirm_password) {
-                document.getElementById("password-para").innerHTML = "Those passwords didn't match.";
-            } else {
-                document.getElementById("password-para").innerHTML = "";
-            }
-        }
+        // } else {
+        //     document.getElementById("user-para").innerHTML = "";
+        //     // document.getElementById("user-para").style.color = "#828282";
+        // }
+    
+        // // passwords equal
+    
+        // if (data.password && data.confirm_password) {
+        //     if (data.password !== data.confirm_password) {
+        //         document.getElementById("password-para").innerHTML = "Those passwords didn't match.";
+        //     } else {
+        //         document.getElementById("password-para").innerHTML = "";
+        //     }
+        // }
       }
     
       function handleGmailClick() {
@@ -131,9 +144,9 @@ function Home() {
           <div className="main">
             <div className="input-row">
               <div className="input-container">
-                <input className="header-input" type="text" name="fname" placeholder="First Name" id="f_name" onChange={event => handleChange(event, 'f_name')}/>
+                <input value={firstName} className="header-input" type="text" placeholder="First Name" onChange={(ev)=>setFirstName(ev.target.value)} />
                 <label className="placeholder-text">First Name</label>
-                <p id="name-para"></p>
+                <p className='error'>{firstNameError}</p>
               </div>
               <div className="input-container">
                 <input className="header-input" type="text" name="lname" placeholder="Last Name" id="l_name" onChange={event => handleChange(event, 'l_name')} />
