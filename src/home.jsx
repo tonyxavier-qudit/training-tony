@@ -203,7 +203,7 @@ function Home() {
               <input value={userName} className="header-input user-input" id="user_name" placeholder={currentEmail ? 'Username' : 'You email address'} onChange={(ev)=>setUserName(ev.target.value)} />
               <span className="placeholder-text" id='placeholder-text'>Username</span>
               <p className='error'>{userNameError}</p>
-              <span className="number" id='postfix'>{currentEmail ? '@gmail.com' : ''}</span>
+              {currentEmail ?<span className="number" id='postfix'> @gmail.com</span> : null}
               <p className="para" id="user-para"><i className="fa-solid fa-circle-exclamation" id="validationIcon" style={{display: "none"}}></i>{currentEmail ? 'you can use letters,numbers & periods' : "Youll need to confirm that this email belongs to you"}</p>
               <div className="h4div">
                 <h4 id="gmail" className="gmail" onClick={event => handleGmailClick()}>{currentEmail ? 'Use my current email address instead' : 'Create a new Gmail address instead'}</h4>
