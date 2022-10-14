@@ -8,7 +8,17 @@ function Home() {
   const [firstNameError, setFirstNameError] = useState('');
   const [secondName, setSecondName] = useState('');
   const [secondNameError, setSecondNameError] = useState('');
-
+  const [userName, setUserName] = useState('');
+  const [userNameError, setUserNameError] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordError, setShowPasswordError] = useState('');
+  console.log('showpassword',showPassword)
+  const [passwordMatchError, setPasswordMatchError] = useState('');
+  const [currentEmail, setCurrentEmail] = useState(true);
 
     const [data, setData] = useState({
         f_name: "",
@@ -50,6 +60,31 @@ function Home() {
         } else {
           setSecondNameError('');
         }
+        if(!userName) {
+          console.log('test')
+          setUserNameError('Enter user name');
+        } else {
+          setUserNameError('');
+        }
+        if(!password) {
+          console.log('test')
+          setPasswordError('Enter password');
+        } else {
+          setPasswordError('');
+        }
+        if(!confirmPassword) {
+          console.log('test')
+          setConfirmPasswordError('Enter confirm password');
+        } else {
+          setConfirmPasswordError('');
+        }
+        if(!showPassword) {
+          console.log('test')
+          setShowPasswordError('Please confirm');
+        } else {
+          setShowPasswordError('');
+        }
+
 
     
         // if (!data.user_name) {
@@ -99,23 +134,25 @@ function Home() {
     
         // // passwords equal
     
-        // if (data.password && data.confirm_password) {
-        //     if (data.password !== data.confirm_password) {
-        //         document.getElementById("password-para").innerHTML = "Those passwords didn't match.";
-        //     } else {
-        //         document.getElementById("password-para").innerHTML = "";
-        //     }
-        // }
+        if (password && confirmPassword) {
+            if (password !== confirmPassword) {
+                // document.getElementById("password-para").innerHTML = "Those passwords didn't match.";
+                setPasswordMatchError("Those passwords didn't match.")
+            } else {
+              setPasswordMatchError("")
+            }
+        }
       }
     
       function handleGmailClick() {
           // let gmailLinkText = document.getElementById("gmailId").innerHTML;
-          document.getElementById("user_name").focus();
-          setData({
-            ...data,
-            current_email: !data.current_email
-          })
-          if (data.current_email) {
+          // document.getElementById("user_name").focus();
+          // setData({
+          //   ...data,
+          //   current_email: !data.current_email
+          // })
+          setCurrentEmail(!currentEmail)
+          if (currentEmail) {
               console.log('dataGmaiilClick', data);
               // document.getElementById("gmailId").innerHTML = "Create a new Gmail address instead";
               // document.getElementById("postfix").innerHTML = "";
@@ -163,12 +200,13 @@ function Home() {
             {/* <input className="header-input" type="text" name="fname" placeholder="last name" /> */}
             <p></p>
             <div className="size input-container">
-              <input className="header-input user-input" id="user_name" placeholder={data.current_email ? 'Username' : 'You email address'} onChange={event => handleChange(event, 'user_name')} />
+              <input value={userName} className="header-input user-input" id="user_name" placeholder={currentEmail ? 'Username' : 'You email address'} onChange={(ev)=>setUserName(ev.target.value)} />
               <span className="placeholder-text" id='placeholder-text'>Username</span>
-              <span className="number" id='postfix'>{data.current_email ? '@gmail.com' : ''}</span>
-              <p className="para" id="user-para"><i className="fa-solid fa-circle-exclamation" id="validationIcon" style={{display: "none"}}></i>{data.current_email ? 'you can use letters,numbers & periods' : "Youll need to confirm that this email belongs to you"}</p>
+              <p className='error'>{userNameError}</p>
+              <span className="number" id='postfix'>{currentEmail ? '@gmail.com' : ''}</span>
+              <p className="para" id="user-para"><i className="fa-solid fa-circle-exclamation" id="validationIcon" style={{display: "none"}}></i>{currentEmail ? 'you can use letters,numbers & periods' : "Youll need to confirm that this email belongs to you"}</p>
               <div className="h4div">
-                <h4 id="gmail" className="gmail" onClick={event => handleGmailClick()}>{data.current_email ? 'Use my current email address instead' : 'Create a new Gmail address instead'}</h4>
+                <h4 id="gmail" className="gmail" onClick={event => handleGmailClick()}>{currentEmail ? 'Use my current email address instead' : 'Create a new Gmail address instead'}</h4>
               </div>
             </div>
           </div>
@@ -176,29 +214,32 @@ function Home() {
           <div className="main">
             <div className="input-row">
               <div className="input-container">
-                <input className="header-input" type={data.checked ? 'text' : 'password'} name="fname" placeholder="Password" id="password" onChange={event => handleChange(event, 'password')} />
+                <input value={password} className="header-input" type={data.checked ? 'text' : 'password'} name="fname" placeholder="Password" id="password" onChange={(ev)=>setPassword(ev.target.value)} />
                 <label className="placeholder-text">Password</label>
+                <p className='error'>{passwordError}</p>
                 <p id="password-para"></p>
               </div>
               <div className="input-container">
-                <input className="header-input" type={data.checked ? 'text' : 'password'} name="lname" placeholder="Confirm Password" id="confirm_password" onChange={event => handleChange(event, 'confirm_password')} />
+                <input value={confirmPassword} className="header-input" type={data.checked ? 'text' : 'password'} name="lname" placeholder="Confirm Password" id="confirm_password" onChange={(ev)=>setConfirmPassword(ev.target.value)} />
                 <span className="placeholder-text">Confirm Password</span>
+                <p className='error'>{confirmPasswordError}</p>
               </div>
             </div>
             {/* <input className="outer-input" type="text" name="fname" placeholder="Confirm" /> */}
           </div>
           <p className="para1">Use 8 or more characters with a mix of letters, numbers & symbols</p>
+          <p className='error'>{passwordMatchError}</p>
           <div className="checkbox-div">
             <div className="checkbox-div1">
-              <input className="checkbox1" type="checkbox" checked={data.checked} id="checkboxElem" onClick={event => handleCheckboxClick(event)} />
+              <input className="checkbox1" type="checkbox" checked={showPassword} id="checkboxElem" onClick={(ev)=>setShowPassword(!showPassword)} />
             </div>
             <div className="checkbox2">
-              <p onClick={event => handleCheckboxClick(event)} style={{cursor: 'pointer', paddingLeft:'12px'}}>Show Password</p>
+              <p onClick={(ev)=>setShowPassword(!showPassword)} style={{cursor: 'pointer', paddingLeft:'12px'}}>Show Password</p>
             </div>
           </div>
           <div className="sign">
             <div className="href">
-              <a className="signin-link" href="Sign In Instead" onClick="window.alert('Loading')">Sign In Instead</a>
+              <a className="signin-link" href="Signin" onClick="window.alert('Loading')">Sign In Instead</a>
             </div>
             <div className="button1">
               <button className="button" onClick={handleNext}> Next</button>
