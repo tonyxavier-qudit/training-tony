@@ -17,7 +17,7 @@ function Home() {
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordError, setShowPasswordError] = useState('');
   console.log('showpassword',showPassword)
-  const [passwordMatchError, setPasswordMatchError] = useState('');
+  const [passwordMatchText, setPasswordMatchText] = useState('');
   const [currentEmail, setCurrentEmail] = useState(true);
 
     const [data, setData] = useState({
@@ -30,20 +30,38 @@ function Home() {
         current_email: true
       });
     
-      function handleChange(event, id) {
-        setData({
-          ...data,
-          [id]: event.target.value.trim()
-        })
+      function handleChange(event) {
+        // setData({
+        //   ...data,
+        //   [id]: event.target.value.trim()
+        // })
+        console.log('value', event.target.value);
+        setConfirmPassword(event.target.value);
+
+        if (password.length > event.target.value.length) {
+          console.log('test1')
+          setPasswordMatchText("")
+        }
+
+        // // else if (password.length === event.target.value.length) {
+        //   console.log('test');
+           if (password === event.target.value) {
+            setPasswordMatchText("Passwords match")
+          }
+          else {
+            setPasswordMatchText("Those passwords didn't match.")
+          }
+        // }
+
       }
     
       
       function handleCheckboxClick(event) {
         // const elem = document.getElementById('checkboxElem');
-        setData({
-          ...data,
-          checked: !data.checked
-        })
+        // setData({
+        //   ...data,
+        //   checked: !data.checked
+        // })
         // elem.checked = !elem.checked;
       }
     
@@ -137,9 +155,9 @@ function Home() {
         if (password && confirmPassword) {
             if (password !== confirmPassword) {
                 // document.getElementById("password-para").innerHTML = "Those passwords didn't match.";
-                setPasswordMatchError("Those passwords didn't match.")
+                setPasswordMatchText("Those passwords didn't match.")
             } else {
-              setPasswordMatchError("")
+              setPasswordMatchText("Passwords match")
             }
         }
       }
@@ -163,22 +181,22 @@ function Home() {
     
       }
     
-      function getTitle() {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-              console.log('onreadystatechange');
-              if (this.readyState == 4 && this.status == 200) {
-                  console.log(this.responseText);
-                  const responseParsed = JSON.parse(this.responseText);
-                  const title = responseParsed.title;
-                  document.getElementsByTagName('body')[0].innerHTML = title;
-              }
-          };
+      // function getTitle() {
+      //     var xhttp = new XMLHttpRequest();
+      //     xhttp.onreadystatechange = function() {
+      //         console.log('onreadystatechange');
+      //         if (this.readyState == 4 && this.status == 200) {
+      //             console.log(this.responseText);
+      //             const responseParsed = JSON.parse(this.responseText);
+      //             const title = responseParsed.title;
+      //             document.getElementsByTagName('body')[0].innerHTML = title;
+      //         }
+      //     };
     
-          xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
-          xhttp.send();
+      //     xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
+      //     xhttp.send();
     
-      }
+      // }
     
       return (
           <div className="maindiv">
@@ -220,7 +238,7 @@ function Home() {
                 <p id="password-para"></p>
               </div>
               <div className="input-container">
-                <input value={confirmPassword} className="header-input" type={data.checked ? 'text' : 'password'} name="lname" placeholder="Confirm Password" id="confirm_password" onChange={(ev)=>setConfirmPassword(ev.target.value)} />
+                <input value={confirmPassword} className="header-input" type={data.checked ? 'text' : 'password'} name="lname" placeholder="Confirm Password" id="confirm_password" onChange={(ev)=>handleChange(ev)} />
                 <span className="placeholder-text">Confirm Password</span>
                 <p className='error'>{confirmPasswordError}</p>
               </div>
@@ -228,7 +246,7 @@ function Home() {
             {/* <input className="outer-input" type="text" name="fname" placeholder="Confirm" /> */}
           </div>
           <p className="para1">Use 8 or more characters with a mix of letters, numbers & symbols</p>
-          <p className='error'>{passwordMatchError}</p>
+          <p className='error'>{passwordMatchText}</p>
           <div className="checkbox-div">
             <div className="checkbox-div1">
               <input className="checkbox1" type="checkbox" checked={showPassword} id="checkboxElem" onClick={(ev)=>setShowPassword(!showPassword)} />
@@ -258,4 +276,3 @@ function Home() {
 }
 
 export default Home;
-
